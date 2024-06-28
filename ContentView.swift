@@ -20,6 +20,8 @@ struct ContentView: View {
     @State private var isShowingPythonView = false
     @State private var isShowingJavascriptView = false
     @State private var isShowingSwiftView = false
+    @State private var isShowingNewsView = false
+
 
     var body: some View {
         NavigationView {
@@ -28,13 +30,15 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 16) // Adjust the top padding value as needed
+                    .padding(.bottom, 20)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 
                 Spacer().frame(height: 20)
+                    
                 
                 
-//              Button - JavaScript
+//                  Button - JavaScript
                 Button(action: {
                                 isShowingJavascriptView = true
                             }) {
@@ -45,7 +49,7 @@ struct ContentView: View {
                                     .background(
                                         RoundedRectangle(cornerRadius: 10)
                                             .fill(Color.gray)
-                                            .frame(width: 350, height: 60)
+                                            .frame(width: 350, height: 100)
                                     )
                             }
 
@@ -54,7 +58,7 @@ struct ContentView: View {
                 NavigationLink(destination: JavaScriptView(), isActive: $isShowingJavascriptView) {
                     EmptyView()
                 }
-                
+                Spacer()
                 // Button - Python
                 Button(action: {
                     isShowingPythonView = true
@@ -66,15 +70,16 @@ struct ContentView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.gray)
-                                .frame(width: 350, height: 60)
+                                .frame(width: 350, height: 100)
                         )
                 }
 
                 NavigationLink(destination: PythonView(), isActive: $isShowingPythonView) {
                     EmptyView()
                 }
+                    
                 
-                
+                Spacer()
                 // Button - Swift
                 Button(action: {
                     isShowingSwiftView = true
@@ -86,12 +91,34 @@ struct ContentView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.gray)
-                                .frame(width: 350, height: 60)
+                                .frame(width: 350, height: 100)
                         )
                 }
                 
 
                 NavigationLink(destination: SwiftView(), isActive: $isShowingSwiftView) {
+                    EmptyView()
+                }
+                
+                Spacer()
+                
+                
+                Button(action: {
+                    isShowingNewsView = true
+                }) {
+                    Text("Tech News")
+                        .font(.title)
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                
+                                .frame(width: 350, height: 60)
+                        )
+                }
+                
+
+                NavigationLink(destination: NewsView(), isActive: $isShowingNewsView) {
                     EmptyView()
                 }
                 
